@@ -22,7 +22,11 @@ import django_htmx_examples.click_to_edit.views as click_to_edit_views
 urlpatterns = [
     path("", TemplateView.as_view(template_name="examples.html"), name="examples-list"),
     path("admin/", admin.site.urls),
-    path("click-to-edit/", click_to_edit_views.index, name="click-to-edit-index"),
+    path(
+        "click-to-edit/",
+        click_to_edit_views.initial_state,
+        name="click-to-edit-initial-state",
+    ),
     path(
         "contact/<int:contact_id>/edit/",
         click_to_edit_views.contact_edit,
@@ -30,7 +34,7 @@ urlpatterns = [
     ),
     path(
         "contact/<int:contact_id>/",
-        click_to_edit_views.contact_update,
+        click_to_edit_views.contact_detail,
         name="contact-update",
     ),
 ]

@@ -9,6 +9,14 @@ class Migration(migrations.Migration):
 
     dependencies = []
 
+    def create_contact(apps, schema_editor):
+        # We can't import the Person model directly as it may be a newer
+        # version than this migration expects. We use the historical version.
+        Contact = apps.get_model("click_to_edit", "Contact")
+        Contact.objects.create(
+            first_name="Django", last_name="Reinhardt", email_address="dr@htmx.org"
+        )
+
     operations = [
         migrations.CreateModel(
             name="Contact",
@@ -27,4 +35,5 @@ class Migration(migrations.Migration):
                 ("email_address", models.EmailField(max_length=254)),
             ],
         ),
+        migrations.RunPython(create_contact),
     ]

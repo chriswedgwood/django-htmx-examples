@@ -8,11 +8,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-def index(request):
+def initial_state(request):
     context = {}
-    contact = get_object_or_404(Contact, id=1)
+    contact = Contact.objects.first()
     context["contact"] = contact
-    return render(request, "click_to_edit/index.html", context)
+    return render(request, "click_to_edit/initial_state.html", context)
 
 
 @require_http_methods(["POST", "GET"])
@@ -26,12 +26,15 @@ def contact_edit(request, contact_id):
     return render(request, "click_to_edit/contact_edit.html", context)
 
 
-@api_view(["PUT"])
-def contact_update(request, contact_id):
+@api_view(["GET", "PUT"])
+def contact_detail(request, contact_id):
+
     contact = get_object_or_404(Contact, id=contact_id)
+    if request.method == "GET":
+        return HttpResponseRedirect(reverse("click-to-edit-initial-state"))
     form = ContactForm(request.POST, instance=contact)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect(reverse("click-to-edit-index"))
+        return HttpResponseRedirect(reverse("click-to-edit-initial-state"))
     else:
         raise Http404
