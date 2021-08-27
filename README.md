@@ -20,16 +20,15 @@ $ source venv/bin/activate
 Install developer and application packages.
 
 ```bash
-$ pip install -r requirements-dev.txt
-$ pip install -r requirements.txt
+(venv) $ pip install -r requirements.txt
 ```
 
 ```bash
-$ python manage.py migrate
+(venv) $ python manage.py migrate
 ```
 
 ```bash
-$ python manage.py runserver
+(venv) $ python manage.py runserver
 ```
 
 
