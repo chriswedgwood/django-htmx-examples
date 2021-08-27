@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+import django_htmx_examples.click_to_edit.views as click_to_edit_views
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("", TemplateView.as_view(template_name="examples.html"), name="examples-list"),
+    path("admin/", admin.site.urls),
+    path("click-to-edit/", click_to_edit_views.index, name="click-to-edit-index"),
+    path(
+        "contact/<int:contact_id>/edit/",
+        click_to_edit_views.contact_edit,
+        name="contact-edit",
+    ),
+    path(
+        "contact/<int:contact_id>/",
+        click_to_edit_views.contact_update,
+        name="contact-update",
+    ),
 ]

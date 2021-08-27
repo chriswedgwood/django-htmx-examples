@@ -1,1 +1,2 @@
-django
+Django==3.2.6
+djangorestframework==3.12.4

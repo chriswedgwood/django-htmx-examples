@@ -1,0 +1,44 @@
+{% load static i18n %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}HTMX Examples{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Chris Wedgwood">
+
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+   
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    {% endblock %}
+
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+
+    
+   
+
+    {% endblock javascript %}
+
+  </head>
+
+  <body>
+     {% block content %}
+     {% endblock content %}
+
+ <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+    </script>
+  </body>
+</html>
