@@ -15,7 +15,7 @@ def initial_state(request):
     return render(request, "click_to_edit/initial_state.html", context)
 
 
-@require_http_methods(["POST", "GET"])
+@require_http_methods(["GET"])
 def contact_edit(request, contact_id):
     context = {}
     contact = get_object_or_404(Contact, id=contact_id)
