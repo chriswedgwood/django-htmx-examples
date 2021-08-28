@@ -1,11 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.urls import reverse
-from .models import Contact
-from .forms import ContactForm
 from django.views.decorators.http import require_http_methods
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from .models import Contact
+from .forms import ContactForm
 
 
 def initial_state(request):

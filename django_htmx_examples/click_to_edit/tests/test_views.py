@@ -19,3 +19,20 @@ class InitialStateTests(TestCase):
         assert contact.first_name in str(response.content)
         assert contact.last_name in str(response.content)
         assert contact.email_address in str(response.content)
+
+
+class ContactEditTests(TestCase):
+    def test_edit_get(self):
+        contact = Contact.objects.first()
+        url = f"/contact/{contact.id}/edit/"
+        response = self.client.get(url)
+        assert response.status_code == HTTPStatus.OK
+        assert contact.first_name in str(response.content)
+        assert contact.last_name in str(response.content)
+        assert contact.email_address in str(response.content)
+        assert "Submit" in str(response.content)
+        assert "Cancel" in str(response.content)
+
+
+class ContactUpdateTests(TestCase):
+    pass

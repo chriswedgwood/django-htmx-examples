@@ -23,10 +23,19 @@ Install developer and application packages.
 (venv) $ pip install -r requirements.txt
 ```
 
+Migrate Database
 ```bash
 (venv) $ python manage.py migrate
 ```
 
+
+Run tests
+```bash
+(venv) $ pytest
+```
+
+
+Run server
 ```bash
 (venv) $ python manage.py runserver
 ```
