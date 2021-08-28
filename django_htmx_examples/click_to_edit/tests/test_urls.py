@@ -16,23 +16,3 @@ def test_contact_edit():
 
 def test_contact_update():
     assert reverse("contact-update", args=[1]) == f"/contact/1/"
-
-
-"""
- path(
-        "click-to-edit/",
-        click_to_edit_views.initial_state,
-        name="click-to-edit-initial-state",
-    ),
-    path(
-        "contact/<int:contact_id>/edit/",
-        click_to_edit_views.contact_edit,
-        name="contact-edit",
-    ),
-    path(
-        "contact/<int:contact_id>/",
-        click_to_edit_views.contact_detail,
-        name="contact-update",
-    ),
-]
-"""
