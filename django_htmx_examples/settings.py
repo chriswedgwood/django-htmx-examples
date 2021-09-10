@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_htmx_examples.click_to_edit.apps.ClickToEditConfig",
+    "django_htmx_examples.bulk_update.apps.BulkUpdateConfig",
     "rest_framework",
 ]
 
