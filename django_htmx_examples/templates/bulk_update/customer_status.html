@@ -1,0 +1,42 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  
+  <form id="checked-contacts">
+      <table>
+        <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+            {% for customer in customers %}
+          <tr class="">
+            <td><input type='checkbox' name='ids' value='{{customer.id}}'></td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{% if customer.status %} Active {% else %} Inactive {% endif %} </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+  </form>
+
+  <div hx-include="#checked-contacts" hx-target="#tbody">
+    <button hx-put="activate" type="button" class="ml-2 inline-flex mt-10 items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Activate
+      </button>
+      <button hx-put="deactivate" type="button" class="ml-2 inline-flex mt-10 items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Deactivate
+      </button>
+    
+  </div>
+  
+{% endblock content %}

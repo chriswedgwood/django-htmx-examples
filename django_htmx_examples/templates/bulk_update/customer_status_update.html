@@ -1,0 +1,13 @@
+
+
+
+          {% for customer in customers %}
+          <tr class="">
+            <td><input type='checkbox' name='ids' value='{{customer.id}}'></td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{% if customer.status %} Active {% else %} Inactive {% endif %} </td>
+          </tr>
+          {% endfor %}
+          
+  

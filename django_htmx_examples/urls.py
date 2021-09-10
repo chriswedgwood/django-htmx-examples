@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 import django_htmx_examples.click_to_edit.views as click_to_edit_views
+import django_htmx_examples.bulk_update.views as bulk_update_views
 
 
 urlpatterns = [
@@ -36,5 +37,20 @@ urlpatterns = [
         "contact/<int:contact_id>/",
         click_to_edit_views.contact_detail,
         name="contact-update",
+    ),
+    path(
+        "bulk-update/",
+        bulk_update_views.customer_status,
+        name="bulk-update-customer-status",
+    ),
+    path(
+        "bulk-update/activate",
+        bulk_update_views.customer_activate,
+        name="bulk-update-customer-activate",
+    ),
+    path(
+        "bulk-update/deactivate",
+        bulk_update_views.customer_deactivate,
+        name="bulk-update-customer-deactivate",
     ),
 ]
